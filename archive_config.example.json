@@ -1,0 +1,31 @@
+{
+  "compression": {
+    "method": "deflated",
+    "level": 9
+  },
+  "gitignore": {
+    "enabled": true,
+    "paths": [
+      ".gitignore"
+    ]
+  },
+  "encryption": {
+    "enabled": false,
+    "password_env": "ARCHIVE_PASSWORD"
+  },
+  "force_include": [
+    "folder_to_include"
+  ],
+  "force_exclude": [
+    ".venv",
+    "node_modules",
+    "vendor",
+    "submodules",
+    "dist",
+    "build"
+  ],
+  "output": {
+    "filename": "repo_archive.zip",
+    "directory": "."
+  }
+}
