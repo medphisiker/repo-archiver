@@ -159,14 +159,14 @@ repo-archiver -p "my-secret-password"
 ## Запуск в Docker
 
 ```bash
-# Сборка образа
-docker build -t repo-archiver .
+# Получить готовый образ
+docker pull medphisiker/repo-archiver:v0.0.1
 
 # Базовый запуск
 docker run --rm \
   -v /path/to/repo:/repo \
   -v /path/to/output:/output \
-  repo-archiver \
+  medphisiker/repo-archiver:v0.0.1 \
   -c /repo/archive_config.json \
   -o /output/archive.zip \
   -r /repo
@@ -176,7 +176,7 @@ docker run --rm \
 docker run --rm -it \
   -v $(pwd):/repo \
   -v $(pwd):/output \
-  repo-archiver \
+  medphisiker/repo-archiver:v0.0.1 \
   -c /repo/archive_config.json \
   -o /output/archive.zip \
   -r /repo \
@@ -187,7 +187,7 @@ docker run --rm \
   -v $(pwd):/repo \
   -v $(pwd):/output \
   -e ARCHIVE_PASSWORD="my-secret" \
-  repo-archiver \
+  medphisiker/repo-archiver:v0.0.1 \
   -c /repo/archive_config.json \
   -o /output/archive.zip \
   -r /repo
@@ -223,11 +223,14 @@ docker run --rm \
 ### Пример архивирования репозитория с docker-контейнером
 
 ```bash
+# Получить готовый образ
+docker pull medphisiker/repo-archiver:v0.0.1
+
 # Запуск (Linux/Mac) — базовый
 docker run --rm \
   -v $(pwd):/repo \
   -v $(pwd):/output \
-  repo-archiver \
+  medphisiker/repo-archiver:v0.0.1 \
   -c /repo/archive_config.json \
   -o /output/archive.zip \
   -r /repo
@@ -236,7 +239,7 @@ docker run --rm \
 docker run --rm -it \
   -v $(pwd):/repo \
   -v $(pwd):/output \
-  repo-archiver \
+  medphisiker/repo-archiver:v0.0.1 \
   -c /repo/archive_config.json \
   -o /output/archive.zip \
   -r /repo \
@@ -247,7 +250,7 @@ docker run --rm `
   -v ${PWD}:/repo `
   -v ${PWD}:/output `
   -e ARCHIVE_PASSWORD="my-secret" `
-  repo-archiver `
+  medphisiker/repo-archiver:v0.0.1 `
   -c /repo/archive_config.json `
   -o /output/archive.zip `
   -r /repo
