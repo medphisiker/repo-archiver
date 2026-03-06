@@ -138,6 +138,10 @@ def create_archive(
             compression=compression_method,
             compresslevel=compression_level
         ) as zip_file:
+            # Устанавливаем пароль для шифрования всех файлов в архиве
+            if password is not None:
+                zip_file.setpassword(password)
+            
             for file_path in root_dir.rglob('*'):
                 if file_path.is_dir():
                     continue
@@ -156,12 +160,8 @@ def create_archive(
                 arc_name = file_path.relative_to(root_dir)
 
                 try:
-                    # Добавляем файл с паролем если указан
-                    if password is not None:
-                        # Для шифрования используем write с pwd
-                        zip_file.write(file_path, arc_name, pwd=password)
-                    else:
-                        zip_file.write(file_path, arc_name)
+                    # Добавляем файл в архив
+                    zip_file.write(file_path, arc_name)
                     file_size = file_path.stat().st_size
                     files_added += 1
                     total_size += file_size
