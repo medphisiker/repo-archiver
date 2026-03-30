@@ -3,7 +3,9 @@ name = "repo-archiver"
 version = "0.1.0"
 description = "Инструмент для создания ZIP-архивов репозиториев с гибкой конфигурацией"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "pyzipper>=0.3.6",
+]
 
 [build-system]
 requires = ["uv_build>=0.10.7"]
